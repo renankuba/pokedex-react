@@ -1,0 +1,9 @@
+.screen {
+    width: 200px;
+    height: 150px;
+    border: 2px solid #000000
+}
+
+.screen.off {
+    background-color:#98CB98;
+}
