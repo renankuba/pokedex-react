@@ -4,8 +4,22 @@
     margin: 5px;
 }
 
+.dot.border {
+    background-color: #FFFFFF;
+}
+
 .dot.red {
     background-color: #F4062D;
+}
+.dot.yellow {
+    background-color: #FECB65;
+}
+.dot.green {
+    background-color: #32CA64;
+}
+
+.dot.blue {
+    background-color: #3298CB;
 }
 
 .dot.xsmall {
@@ -20,14 +34,43 @@
     border: 2px solid #000000
 }
 
+.dot.medium {
+    height: 25px;
+    width: 25px;
+    border: 2px solid #000000
+}
+
+.dot.xlarge {
+    height: 75px;
+    width: 75px;
+    border: 3px solid #000000
+}
+
+.dot.border.xlarge {
+    height: 90px;
+    width: 90px;
+}
+
 .reflex {
     background-color: #ffffff87;
     position: relative;
-    top: -3px;
-    left: -2px;
 }
 
 .reflex-small {
     height: 6px;
     width: 6px;
+    top: -3px;
+    left: -2px;
+}
+.reflex-medium {
+    height: 8px;
+    width: 8px;
+    top: -2px;
+    left: 0px;
+}
+.reflex-xlarge {
+    height: 20px;
+    width: 20px;
+    top: 6px;
+    left: 6px;
 }

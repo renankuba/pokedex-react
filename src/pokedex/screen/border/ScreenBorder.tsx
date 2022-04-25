@@ -1,6 +1,6 @@
 import React from 'react';
-import Light from '../light/Light';
-import Sound from '../sound/Sound';
+import Light from '../../light/Light';
+import Sound from '../../sound/Sound';
 import './ScreenBorder.css'
 
 type ScreenBorderProps = {

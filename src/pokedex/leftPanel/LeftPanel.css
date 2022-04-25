@@ -1,0 +1,17 @@
+
+.left-panel {
+    width: min-content;
+    height: 550px;
+    background-color: #FE0065;
+    border: 3px solid #000000;
+    border-radius: 15px 15px 0 15px;
+}
+
+.nav-lights {
+    display: flex;
+    padding-bottom: 10px;
+}
+
+.screen-container {
+    padding: 10px 50px;
+}

@@ -1,0 +1,10 @@
+.division {
+    position: absolute;
+    top: 50px
+}
+
+.division-line {
+    fill: none;
+    stroke: black;
+    stroke-width: 4;
+}
