@@ -1,0 +1,10 @@
+.dex-display {
+    width: 150px;
+    height: 60px;
+    border: 2px solid #000000;
+    border-radius: 5px;
+}
+
+.dex-display.green{
+    background-color: #3AB47D;
+}

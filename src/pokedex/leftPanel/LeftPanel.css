@@ -20,6 +20,29 @@
     padding:15px;
 }
 
+.other-buttons-wrapper > div {
+    padding: 5px;
+}
+
+.top-other-buttons {
+    display: flex;
+}
+
+.bottom-other-buttons{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.main-buttons {
+    display: flex;
+}
+
+.Dpad {
+    width: 100px;
+    height: 100px;
+}
+
 .footer{
     display: flex;
     align-items: center;

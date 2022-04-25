@@ -1,0 +1,15 @@
+.poke-bar {
+    width: 70px;
+    height: 10px;
+    border: 2px solid #000000;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.poke-bar.blue{
+    background-color: #85BDFE;
+}
+.poke-bar.red{
+    background-color: #FF0102;
+}
+
