@@ -2,9 +2,9 @@ import Light from "../Light";
 import './TrafficLight.css'
 
 const TrafficLight = () => <div className='signal-container'>
-    <Light size={'medium'} color={'red'} reflective={true} />
-    <Light size={'medium'} color={'yellow'} reflective={true} />
-    <Light size={'medium'} color={'green'} reflective={true} />
+    <Light size={'medium'} color={'red'} />
+    <Light size={'medium'} color={'yellow'} />
+    <Light size={'medium'} color={'green'} />
 </div>
 
 export default TrafficLight;

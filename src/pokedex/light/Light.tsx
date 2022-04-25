@@ -3,18 +3,16 @@ import './Light.css'
 type props = {
     color: 'red' | 'yellow' | 'green' | 'blue';
     size: 'xsmall' | 'small' | 'medium' | 'xlarge';
-    reflective?: boolean;
 }
 
-const Light = ({ color, size, reflective }: props) => <div className={`dot ${color} ${size}`}>
-    {reflective && <div className={`dot reflex reflex-${size}`} />}
+const Light = ({ color, size }: props) => <div className={`light ${color} ${size}`}>
+    <div className={`light reflex reflex-${size}`} />
 </div>
 
-const BorderedLight = ({ color, size, reflective }: props) => <div className={`dot border ${size}`}>
+const BorderedLight = ({ color, size}: props) => <div className={`light border ${size}`}>
     <Light
         color={color}
-        size={size}
-        reflective={reflective} />
+        size={size} />
 </div>
 
 export default Light;

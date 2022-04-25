@@ -1,52 +1,52 @@
-.dot {
+.light {
     border-radius: 50%;
     display: inline-block;
     margin: 5px;
 }
 
-.dot.border {
+.light.border {
     background-color: #FFFFFF;
 }
 
-.dot.red {
+.light.red {
     background-color: #F4062D;
 }
-.dot.yellow {
+.light.yellow {
     background-color: #FECB65;
 }
-.dot.green {
+.light.green {
     background-color: #32CA64;
 }
 
-.dot.blue {
+.light.blue {
     background-color: #3298CB;
 }
 
-.dot.xsmall {
-    height: 7px;
-    width: 7px;
-    border: 1px solid #000000
+.light.xsmall {
+    height: 12px;
+    width: 12px;
+    border: 2px solid #000000
 }
 
-.dot.small {
+.light.small {
     height: 17px;
     width: 17px;
     border: 2px solid #000000
 }
 
-.dot.medium {
+.light.medium {
     height: 25px;
     width: 25px;
     border: 2px solid #000000
 }
 
-.dot.xlarge {
+.light.xlarge {
     height: 75px;
     width: 75px;
     border: 3px solid #000000
 }
 
-.dot.border.xlarge {
+.light.border.xlarge {
     height: 90px;
     width: 90px;
 }
@@ -54,6 +54,13 @@
 .reflex {
     background-color: #ffffff87;
     position: relative;
+}
+
+.reflex-xsmall{
+    height: 4px;
+    width: 4px;
+    top: -3px;
+    left: -3px;
 }
 
 .reflex-small {

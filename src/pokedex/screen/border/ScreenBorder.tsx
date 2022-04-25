@@ -1,21 +1,22 @@
 import React from 'react';
+import Hole from '../../hole/Hole';
 import Light from '../../light/Light';
 import Sound from '../../sound/Sound';
 import './ScreenBorder.css'
 
-type ScreenBorderProps = {
+type props = {
     children: React.ReactNode
 }
 
-const ScreenBorder = ({ children }: ScreenBorderProps) =>
+const ScreenBorder = ({ children }: props) =>
     <div className={`screen-border`}>
         <div className='top-lights-container'>
-            <Light size={'xsmall'} color={'red'}/>
-            <Light size={'xsmall'} color={'red'}/>
+            <Hole size={'large'} color={'red'}/>
+            <Hole size={'large'} color={'red'}/>
         </div>
         {children}
         <div className='bottom-output-container'>
-            <Light size={'small'} color={'red'} reflective={true}/>
+            <Light size={'small'} color={'red'} />
             <Sound/>
         </div>
     </div>
