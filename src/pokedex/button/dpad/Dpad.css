@@ -14,15 +14,24 @@
     grid-area: r;
     border-left: none;
 }
-.center {
+.center-wrapper {
     grid-area: c;
     background-color: #585858;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.center {
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
 }
 
 .d-pad {
     display: grid;
-    grid-template-columns: 20px 20px 28px 20px 20px;
-    grid-template-rows: 20px 20px 28px 20px 20px;
+    grid-template-columns: 20px 20px 30px 20px 20px;
+    grid-template-rows: 20px 20px 30px 20px 20px;
     grid-template-areas: 
                         '. . u . .'
                         '. . u . .'
