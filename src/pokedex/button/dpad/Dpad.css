@@ -1,0 +1,32 @@
+.up {
+    grid-area: u;
+    border-bottom: none;
+}
+.down {
+    grid-area: d;
+    border-top: none;
+}
+.left {
+    grid-area: l;
+    border-right: none;
+}
+.right {
+    grid-area: r;
+    border-left: none;
+}
+.center {
+    grid-area: c;
+    background-color: #585858;
+}
+
+.d-pad {
+    display: grid;
+    grid-template-columns: 20px 20px 28px 20px 20px;
+    grid-template-rows: 20px 20px 28px 20px 20px;
+    grid-template-areas: 
+                        '. . u . .'
+                        '. . u . .'
+                        'l l c r r'
+                        '. . d . .'
+                        '. . d . .';
+}

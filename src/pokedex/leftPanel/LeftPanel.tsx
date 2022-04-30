@@ -1,4 +1,5 @@
 import AirExit from '../airExit/AirExit';
+import Dpad from '../button/dpad/Dpad';
 import PokeBar from '../button/PokeBar';
 import PokeButton from '../button/PokeButton';
 import DexDisplay from '../display/DexDisplay';
@@ -35,9 +36,7 @@ const LeftPanel = ({ children }: props) => <div className='left-panel'>
                     <DexDisplay color='green'/>
                 </div>
             </div>
-            <div className='directions'>
-                <div className='Dpad'></div>
-            </div>
+            <Dpad/>
         </div>
         <div className='footer'>
             <Light size='xsmall' color='red'/>

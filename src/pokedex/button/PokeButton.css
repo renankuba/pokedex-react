@@ -1,10 +1,10 @@
 .poke-button {
-    width: 50px;
-    height: 50px;
     background-color: #585858;
-    border: 2px solid #000000;
+    cursor: pointer;
 }
 
 .poke-button.rounded {
     border-radius: 50%;
+    width: 50px;
+    height: 50px;
 }
