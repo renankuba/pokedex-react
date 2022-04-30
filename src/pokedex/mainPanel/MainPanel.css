@@ -1,0 +1,38 @@
+.screen-container {
+    padding: 10px 50px;
+}
+
+.bottom-buttons{
+    padding:15px;
+}
+
+.other-buttons-wrapper > div {
+    padding: 5px;
+}
+
+.top-other-buttons {
+    display: flex;
+}
+
+.bottom-other-buttons{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.main-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.Dpad {
+    width: 100px;
+    height: 100px;
+}
+
+.footer{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding: 0 15px;
+}

@@ -1,13 +1,9 @@
-import ScreenBorder from './screen/border/ScreenBorder';
 import LeftPanel from './leftPanel/LeftPanel';
-import MainScreen from './screen/MainScreen';
+import MainPanel from './mainPanel/MainPanel';
 
 const Pokedex = () => <div>
     <LeftPanel>
-        <ScreenBorder>
-            <MainScreen
-                isOn={false} />
-        </ScreenBorder>
+        <MainPanel />
     </LeftPanel>
 </div>
 
