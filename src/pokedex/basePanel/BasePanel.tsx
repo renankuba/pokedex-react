@@ -2,14 +2,14 @@ import { BorderedLight } from '../light/Light';
 import TrafficLight from '../light/trafficLight/TrafficLight';
 import PanelDivision from './panelDivision/PanelDivision';
 import Hinge from '../hinge/Hinge';
-import './LeftPanel.css';
+import './BasePanel.css';
 
 type props = {
     children: React.ReactNode;
 }
 
-const LeftPanel = ({ children }: props) => <div className='left-panel'>
-    <div className="left-panel-wrapper"> 
+const BasePanel = ({ children }: props) => <div className='base-panel'>
+    <div className="base-panel-wrapper"> 
         <div className='nav-lights'>
             <BorderedLight size={'xlarge'} color={'blue'} />
             <TrafficLight />
@@ -20,4 +20,4 @@ const LeftPanel = ({ children }: props) => <div className='left-panel'>
     <PanelDivision />
 </div>;
 
-export default LeftPanel;
+export default BasePanel;

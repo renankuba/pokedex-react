@@ -1,11 +1,11 @@
-import LeftPanel from './leftPanel/LeftPanel';
+import BasePanel from './basePanel/BasePanel';
 import MainPanel from './mainPanel/MainPanel';
 import './Pokedex.css';
 
 const Pokedex = () => <div className='pokedex closed'>
-    <LeftPanel>
+    <BasePanel>
         <MainPanel/>
-    </LeftPanel>
+    </BasePanel>
 </div>
 
 export default Pokedex;
