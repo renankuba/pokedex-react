@@ -1,0 +1,10 @@
+.pokedex {
+    background-color: #FE0065;
+    width: fit-content;
+    border: 3px solid #000000;
+    border-radius: 15px;
+}
+
+.pokedex.closed{
+    border-radius: 15px 15px 0 15px;
+}

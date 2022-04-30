@@ -1,11 +1,23 @@
 .left-panel {
     width: min-content;
-    background-color: #FE0065;
-    border: 3px solid #000000;
+    /* border: 3px solid #000000; */
     border-radius: 15px 15px 0 15px;
 }
 
 .nav-lights {
     display: flex;
     padding-bottom: 10px;
+    grid-area: l;
+}
+
+.left-panel-wrapper > div:nth-child(3){
+    grid-area: h;
+}
+
+.left-panel-wrapper {
+    display: grid;
+    grid-template-columns: 360px 30px;
+    grid-template-areas:
+                        'l h'
+                        '. h';
 }

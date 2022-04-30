@@ -1,9 +1,10 @@
 import LeftPanel from './leftPanel/LeftPanel';
 import MainPanel from './mainPanel/MainPanel';
+import './Pokedex.css';
 
-const Pokedex = () => <div>
+const Pokedex = () => <div className='pokedex closed'>
     <LeftPanel>
-        <MainPanel />
+        <MainPanel/>
     </LeftPanel>
 </div>
 

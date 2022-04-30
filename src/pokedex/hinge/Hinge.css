@@ -1,0 +1,24 @@
+.hinge {
+    margin-top: 58px;
+    height: calc(100% - 58px);
+    border-left: 4px solid #000000;
+    border-right: 1px solid #000000;
+    background-color: #BA0000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hinge-item {
+    height: 20px;
+    border-top: 4px solid #000000;
+    border-bottom: 4px solid #000000;
+}
+
+.hinge-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #FE0065;
+    height: calc(100% - 128px);
+}

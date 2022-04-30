@@ -9,7 +9,7 @@ import ScreenBorder from '../screen/border/ScreenBorder';
 import MainScreen from '../screen/MainScreen';
 import './MainPanel.css'
 
-const MainPanel = () => <>
+const MainPanel = () => <div>
     <div className='screen-container'>
             <ScreenBorder>
                 <MainScreen
@@ -37,6 +37,6 @@ const MainPanel = () => <>
                 <AirExit />
             </div>
         </div>
-</>
+</div>
 
 export default MainPanel;

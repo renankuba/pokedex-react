@@ -1,6 +1,7 @@
 import { BorderedLight } from '../light/Light';
 import TrafficLight from '../light/trafficLight/TrafficLight';
 import PanelDivision from './panelDivision/PanelDivision';
+import Hinge from '../hinge/Hinge';
 import './LeftPanel.css';
 
 type props = {
@@ -8,12 +9,15 @@ type props = {
 }
 
 const LeftPanel = ({ children }: props) => <div className='left-panel'>
-    <div className='nav-lights'>
-        <BorderedLight size={'xlarge'} color={'blue'} />
-        <TrafficLight />
+    <div className="left-panel-wrapper"> 
+        <div className='nav-lights'>
+            <BorderedLight size={'xlarge'} color={'blue'} />
+            <TrafficLight />
+        </div>
+        {children}
+        <Hinge />
     </div>
     <PanelDivision />
-    {children}
 </div>;
 
 export default LeftPanel;
