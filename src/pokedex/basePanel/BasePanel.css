@@ -17,6 +17,7 @@
 .base-panel-wrapper {
     display: grid;
     grid-template-columns: 360px 30px;
+    grid-template-rows: 116px 490px;
     grid-template-areas:
                         'l h'
                         '. h';

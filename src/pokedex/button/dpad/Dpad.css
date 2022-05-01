@@ -1,18 +1,22 @@
 .up {
     grid-area: u;
     border-bottom: none;
+    border-radius: 5px 5px 0 0;
 }
 .down {
     grid-area: d;
     border-top: none;
+    border-radius: 0 0 5px 5px;
 }
 .left {
     grid-area: l;
     border-right: none;
+    border-radius: 5px 0 0 5px;
 }
 .right {
     grid-area: r;
     border-left: none;
+    border-radius: 0 5px 5px 0;
 }
 .center-wrapper {
     grid-area: c;
@@ -20,6 +24,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .center {

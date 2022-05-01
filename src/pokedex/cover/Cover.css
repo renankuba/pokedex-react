@@ -1,0 +1,44 @@
+.cover {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    grid-template-areas: 
+                            ". . . . . . . . ."
+                            ". . . . . . . . ."
+                            ". . . . . . . . ."
+                            ". a . . . . . . ."
+                            ". . . . . . . . ."
+                            ". . . . . . . . ."
+                            ". . . . . . . . ."
+                            ". . . b b b . . ."
+                            ". . . . . . . . ."
+                            ". . . . . . . . ."
+                            ". . . . . . . . ."
+                            ". . . . . . . . .";
+}
+
+.arrow-right {
+    position: relative;
+    top: -60px;
+    left: -66px;
+    width: 0px;
+    height: 0px;
+    border-top: 60px solid transparent;
+    border-bottom: 60px solid transparent;
+    border-left: 60px solid #FFF562;
+}
+
+.arrow-right-border {
+    width: 0px;
+    height: 0px;
+    border-top: 70px solid transparent;
+    border-bottom: 70px solid transparent;
+    border-left: 70px solid #000000;
+    grid-area: a;
+}
+
+.bar {
+    border: 4px solid #000000;
+    grid-area: b;
+    background-color: #BA0000;
+}
