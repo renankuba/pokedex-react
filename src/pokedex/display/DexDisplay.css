@@ -1,10 +1,27 @@
 .dex-display {
-    width: 150px;
-    height: 60px;
     border: 2px solid #000000;
     border-radius: 5px;
+    font-family: "PokemonGB";
 }
 
 .dex-display.green{
     background-color: #3AB47D;
+}
+
+.dex-display.gray{
+    background-color: #585858;
+}
+
+.dex-display.medium{
+    width: 150px;
+    height: 60px;
+}
+.dex-display.large{
+    width: 280px;
+    height: 120px;
+
+    font-size: 80px;
+    line-height: 120px;
+    text-align: center;
+    vertical-align: middle;
 }

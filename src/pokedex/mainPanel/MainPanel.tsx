@@ -7,7 +7,7 @@ import Hole from '../hole/Hole';
 import Light from '../light/Light';
 import ScreenBorder from '../screen/border/ScreenBorder';
 import MainScreen from '../screen/MainScreen';
-import './MainPanel.css'
+import './MainPanel.css';
 
 const MainPanel = () => <div>
     <div className='screen-container'>
@@ -27,7 +27,9 @@ const MainPanel = () => <div>
                     <div className='bottom-other-buttons'>
                         <Hole size='small' color='black' />
                         <Hole size='small' color='black' />
-                        <DexDisplay color='green' />
+                        <DexDisplay 
+                            color='green' 
+                            size='medium' />
                     </div>
                 </div>
                 <Dpad />

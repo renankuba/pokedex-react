@@ -2,7 +2,7 @@ import './Light.css'
 
 type props = {
     color: 'red' | 'yellow' | 'green' | 'blue';
-    size: 'xsmall' | 'small' | 'medium' | 'xlarge';
+    size: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
 }
 
 const Light = ({ color, size }: props) => <div className={`light ${color} ${size}`}>

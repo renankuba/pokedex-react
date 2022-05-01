@@ -1,0 +1,19 @@
+.division {
+    position: absolute;
+    top: 50px
+}
+
+.division-line {
+    fill: none;
+    stroke: black;
+    stroke-width: 4;
+}
+
+.hide {
+    fill: #FFFFFF;
+}
+
+.selector-top-bar {
+    display: flex;
+    justify-content: end;
+}
