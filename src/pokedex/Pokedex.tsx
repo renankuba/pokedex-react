@@ -4,17 +4,27 @@ import Cover from './cover/Cover';
 import MainPanel from './mainPanel/MainPanel';
 import SelectorPanel from './selectorPanel/SelectorPanel';
 import './Pokedex.css';
+import { fetchPokemonById } from '../services/PokedexService';
+import Pokemon from '../model/Pokemon';
+
 
 const Pokedex = () => {
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState<boolean>(false);
+    const [selectedPokemon, setPokemon] = useState<Pokemon>();
+
     return <div className={`pokedex `}>
         <BasePanel>
             {open ?
-                 <MainPanel /> 
-                 : <Cover onOpen={() => setOpen(true)} />
+                <MainPanel
+                    selectedPokemon={selectedPokemon}
+                />
+                : <Cover onOpen={() => setOpen(true)} />
             }
         </BasePanel>
-        {open && <SelectorPanel onClose={() => setOpen(false)}/>}
+        {open &&
+            <SelectorPanel
+                onClose={() => setOpen(false)}
+                onSelect={n => fetchPokemonById(n).then(setPokemon)} />}
     </div>
 }
 

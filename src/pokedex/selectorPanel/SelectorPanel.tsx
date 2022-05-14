@@ -9,10 +9,13 @@ import './SelectorPanel.css';
 
 type props = {
     onClose: ()=>void;
+    onSelect: (pokemonId:number) => void;
 }
 
-const SelectorPanel = ({onClose}:props) => {
-    const [text, setText] = useState("___");
+const SelectorPanel = ({onClose, onSelect}:props) => {
+    const emptyText = "___";
+    const [text, setText] = useState(emptyText);
+
     return <div className="selector-panel-wrapper">
         <div className='selector-panel'>
             <DexDisplay
@@ -37,8 +40,8 @@ const SelectorPanel = ({onClose}:props) => {
              </div>
              <div className="space-between">
                  <div>
-                    <PokeButton shape="square" color='green' />
-                    <PokeButton shape="square" color='yellow' />
+                    <PokeButton shape="square" color='green' onClickPokebutton={()=>onSelect(Number.parseInt(text.replaceAll("_", "")))}/>
+                    <PokeButton shape="square" color='yellow' onClickPokebutton={()=>setText(emptyText)}/>
                 </div>
                 <Light size='large' color='yellow' />
              </div>

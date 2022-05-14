@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import Pokemon from '../../model/Pokemon';
+import { fetchPokemonById } from '../../services/PokedexService';
 import AirExit from '../airExit/AirExit';
 import Dpad from '../button/dpad/Dpad';
 import PokeBar from '../button/PokeBar';
@@ -9,11 +12,16 @@ import ScreenBorder from '../screen/border/ScreenBorder';
 import MainScreen from '../screen/MainScreen';
 import './MainPanel.css';
 
-const MainPanel = () => <div>
-    <div className='screen-container'>
+type props = {
+    selectedPokemon?: Pokemon
+}
+
+const MainPanel = ({selectedPokemon}: props) => {
+    return <div>
+        <div className='screen-container'>
             <ScreenBorder>
                 <MainScreen
-                    isOn={false} />
+                    selectedPokemon={selectedPokemon} />
             </ScreenBorder>
         </div>
         <div className='bottom-buttons'>
@@ -27,8 +35,8 @@ const MainPanel = () => <div>
                     <div className='bottom-other-buttons'>
                         <Hole size='small' color='black' />
                         <Hole size='small' color='black' />
-                        <DexDisplay 
-                            color='green' 
+                        <DexDisplay
+                            color='green'
                             size='medium' />
                     </div>
                 </div>
@@ -39,6 +47,7 @@ const MainPanel = () => <div>
                 <AirExit />
             </div>
         </div>
-</div>
+    </div>
+}
 
 export default MainPanel;

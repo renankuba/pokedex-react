@@ -1,0 +1,60 @@
+openapi: 3.0.0
+info:
+  title: pokedex OpenApi document
+  version: 0.0.1
+paths:
+  /pokedex/pokemons/{pokemonId}:
+    get:
+      summary: get information for pokemon with specified id.
+      parameters:
+      - $ref: "#/components/parameters/pokemonId"
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/pokemon"
+        '404':
+          description: A pokemon with specified id was not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/notFound"
+components:
+  parameters:
+    pokemonId:
+      name: pokemonId
+      in: path
+      required: true
+      schema: "#/components/schemas/pokemonId"
+  schemas:
+    pokemonId:
+      type: integer
+      minimum: 1
+      maximum: 151
+      example: 1
+    pokemon:
+      type: object
+      properties:
+        number:
+          $ref: "#/components/schemas/pokemonId"
+        name:
+          type: string
+          maxLenght: 256
+          example: "Bulbasaur"
+        image:
+          type: string
+          example: "https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/1.svg"
+    notFound:
+      type: object
+      properties:
+        url:
+          type: string
+          example: http://localhost:8080/id/1
+        code:
+          type: integer
+          example: 404
+        message:
+          type: string
+          example: "Could not find pokemon with the specified id"

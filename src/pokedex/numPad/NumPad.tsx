@@ -10,7 +10,7 @@ const NumPad = ({ onClick }: props) => <div className="num-pad">
         let value = i + 1 > 9 ? 0 : i + 1;
         return <PokeButton
             key={`button-${value}`}
-            onClickPokebutton={() => {console.log(value); onClick(value)}}
+            onClickPokebutton={() => onClick(value)}
             text={value}
             color={'blue'}
             shape="square" />;

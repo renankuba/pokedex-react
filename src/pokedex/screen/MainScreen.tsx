@@ -1,8 +1,14 @@
+import Pokemon from '../../model/Pokemon';
 import './MainScreen.css';
+import PokemonView from './PokemonView';
 
 type props = {
-    isOn:boolean
+    selectedPokemon?: Pokemon
 }
-const MainScreen = ({isOn}:props) => <div className={`screen ${isOn?'on':'off'}`}></div>
+const MainScreen = ({selectedPokemon}:props) => <div className={`screen ${selectedPokemon?.number?'on':'off'}`}>
+    {selectedPokemon?.number && <PokemonView 
+        pokemon={selectedPokemon}
+    />}
+</div>
 
 export default MainScreen;

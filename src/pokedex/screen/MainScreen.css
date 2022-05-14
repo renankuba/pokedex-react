@@ -3,8 +3,13 @@
     height: 200px;
     border: 2px solid #000000;
     border-radius: 5px;
+    font-family: "PokemonGB";
 }
 
 .screen.off {
     background-color:#98CB98;
+}
+
+.screen.on {
+    background-color: #91eb91;
 }

@@ -9,7 +9,6 @@ type props = {
 
 const PokeButton = ({ shape, color = 'gray', text, onClickPokebutton }: props) => <button
     className={`poke-button ${shape} ${color}`}
-    type='button'
     onClick={onClickPokebutton}>
     {text}
 </button>;
