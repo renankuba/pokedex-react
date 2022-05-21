@@ -16,6 +16,11 @@
     border-radius: 5px;
 }
 
+.poke-button.rounded:active,
+.poke-button.square:active {
+    transform: translatey(1px);
+}
+
 .poke-button.blue {
     background-color: #7CA9F7;
 }

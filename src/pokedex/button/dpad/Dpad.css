@@ -3,21 +3,41 @@
     border-bottom: none;
     border-radius: 5px 5px 0 0;
 }
+
+.up:active {
+    transform: translateY(1px);
+}
+
 .down {
     grid-area: d;
     border-top: none;
     border-radius: 0 0 5px 5px;
 }
+
+.down:active {
+    transform: translateY(-1px);
+}
+
 .left {
     grid-area: l;
     border-right: none;
     border-radius: 5px 0 0 5px;
 }
+
+.left:active {
+    transform: translateX(1px);
+}
+
 .right {
     grid-area: r;
     border-left: none;
     border-radius: 0 5px 5px 0;
 }
+
+.right:active {
+    transform: translateX(-1px);
+}
+
 .center-wrapper {
     grid-area: c;
     background-color: #585858;

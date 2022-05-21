@@ -3,3 +3,7 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.num-pad > .poke-button:active {
+    transform: translatey(1px);
+}
