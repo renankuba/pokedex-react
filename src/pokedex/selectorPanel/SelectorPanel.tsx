@@ -15,7 +15,23 @@ type props = {
 
 const SelectorPanel = ({onClose, onConfirm, selectedPokemonId}:props) => {
     const emptyText = "___";
-    const [text, setText] = useState((selectedPokemonId?.toString() || emptyText).padStart(3, "_"));
+    const [text, setText] = useState<string>((selectedPokemonId?.toString() || emptyText).padStart(3, "_"));
+    const [reset, setReset] = useState<boolean>(true);
+
+    const handleSetText = (text: string, pressedNumber: number) => {
+        let blank = '_'
+        text = reset?'':text.replace(blank, '');
+        if(text.length === 3)
+            text = '';
+        text = (text+pressedNumber);
+        setReset(false);
+        return text.padStart(3, blank);
+    }
+
+    const handleConfirm = () => {
+        onConfirm(Number.parseInt(text.replaceAll("_", "")));
+        setReset(true);
+    }
 
     return <div className="selector-panel-wrapper">
         <div className='selector-panel'>
@@ -41,7 +57,7 @@ const SelectorPanel = ({onClose, onConfirm, selectedPokemonId}:props) => {
              </div>
              <div className="space-between">
                  <div>
-                    <PokeButton shape="square" color='green' onClickPokebutton={()=>onConfirm(Number.parseInt(text.replaceAll("_", "")))}/>
+                    <PokeButton shape="square" color='green' onClickPokebutton={handleConfirm}/>
                     <PokeButton shape="square" color='yellow' onClickPokebutton={()=>setText(emptyText)}/>
                 </div>
                 <Light size='large' color='yellow' />
@@ -56,12 +72,3 @@ const SelectorPanel = ({onClose, onConfirm, selectedPokemonId}:props) => {
 }
 
 export default SelectorPanel;
-
-const handleSetText = (text: string, n: number) => {
-    let blank = '_'
-    text = text.replace(blank, '');
-    if(text.length === 3)
-        text = '';
-    text = (text+n);
-    return text.padStart(3, blank);
-}
