@@ -8,13 +8,14 @@ import PanelDivision from "./panelDivision/PanelDivision";
 import './SelectorPanel.css';
 
 type props = {
+    selectedPokemonId?: number;
     onClose: ()=>void;
-    onSelect: (pokemonId:number) => void;
+    onConfirm: (pokemonId:number) => void;
 }
 
-const SelectorPanel = ({onClose, onSelect}:props) => {
+const SelectorPanel = ({onClose, onConfirm, selectedPokemonId}:props) => {
     const emptyText = "___";
-    const [text, setText] = useState(emptyText);
+    const [text, setText] = useState((selectedPokemonId?.toString() || emptyText).padStart(3, "_"));
 
     return <div className="selector-panel-wrapper">
         <div className='selector-panel'>
@@ -22,7 +23,7 @@ const SelectorPanel = ({onClose, onSelect}:props) => {
                 color="gray"
                 text={text}
                 size="large" />
-            <NumPad onClick={n => setText(handleSetText(text, n))} />
+            <NumPad onClick={pressedNumber => setText(handleSetText(text, pressedNumber))} />
         </div>
         <div className="selector-bottom-button">
              <div className="selector-top-bar">
@@ -40,7 +41,7 @@ const SelectorPanel = ({onClose, onSelect}:props) => {
              </div>
              <div className="space-between">
                  <div>
-                    <PokeButton shape="square" color='green' onClickPokebutton={()=>onSelect(Number.parseInt(text.replaceAll("_", "")))}/>
+                    <PokeButton shape="square" color='green' onClickPokebutton={()=>onConfirm(Number.parseInt(text.replaceAll("_", "")))}/>
                     <PokeButton shape="square" color='yellow' onClickPokebutton={()=>setText(emptyText)}/>
                 </div>
                 <Light size='large' color='yellow' />

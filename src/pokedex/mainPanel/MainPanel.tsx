@@ -13,10 +13,12 @@ import MainScreen from '../screen/MainScreen';
 import './MainPanel.css';
 
 type props = {
-    selectedPokemon?: Pokemon
+    selectedPokemon?: Pokemon;
+    goToNext: () => void;
+    goToPrevious: () => void;
 }
 
-const MainPanel = ({selectedPokemon}: props) => {
+const MainPanel = ({selectedPokemon, goToNext, goToPrevious}: props) => {
     return <div>
         <div className='screen-container'>
             <ScreenBorder>
@@ -40,7 +42,10 @@ const MainPanel = ({selectedPokemon}: props) => {
                             size='medium' />
                     </div>
                 </div>
-                <Dpad />
+                <Dpad
+                    onPressDown={goToNext}
+                    onPressUp={goToPrevious}
+                />
             </div>
             <div className='footer'>
                 <Light size='xsmall' color='red' />
