@@ -9,6 +9,7 @@ const renderSelector = (props: Partial<any> = {}) => {
         onConfirm() {
             return;
         },
+        on: true,
         selectedPokemonId: undefined,
     };
 
@@ -16,6 +17,17 @@ const renderSelector = (props: Partial<any> = {}) => {
 }
 
 describe("<SelectorPanel />", () => {
+    test("should display nothing", async () => {
+        const element = renderSelector({on:false});
+        expect(element.container.getElementsByClassName("dex-display")[0].textContent).toBe("");
+    });
+
+    test("should display clicked numbers", async () => {
+        const element = renderSelector({on:false});
+        fireEvent.click(element.getAllByText("1")[0]);
+        expect(element.container.getElementsByClassName("dex-display")[0].textContent).toBe("");
+    });
+
     test("should display empty id", async () => {
         const element = renderSelector();
         expect(element.container.getElementsByClassName("dex-display")[0].textContent).toBe("___");
@@ -29,19 +41,19 @@ describe("<SelectorPanel />", () => {
         expect(element.container.getElementsByClassName("dex-display")[0].textContent).toBe("_12");
         fireEvent.click(element.getAllByText("3")[0]);
         expect(element.container.getElementsByClassName("dex-display")[0].textContent).toBe("123");
-    })
+    });
 
     test("should display passed id on props", async () => {
         const element = renderSelector({selectedPokemonId: 23});
         expect(element.container.getElementsByClassName("dex-display")[0].textContent).toBe("_23");
-    })
+    });
 
     test("should reset text fater pressing yellow", async () => {
         const element = renderSelector({selectedPokemonId: 23});
         expect(element.container.getElementsByClassName("dex-display")[0].textContent).toBe("_23");
         fireEvent.click(element.container.getElementsByClassName("yellow")[0]);
         expect(element.container.getElementsByClassName("dex-display")[0].textContent).toBe("___");
-    })
+    });
 
     test("should call onConfirm whem pressing green", async () => {
         const onConfirm = jest.fn();
@@ -50,7 +62,7 @@ describe("<SelectorPanel />", () => {
         fireEvent.click(element.container.getElementsByClassName("green")[0]);
         expect(onConfirm).toHaveBeenCalledTimes(1);
         expect(onConfirm).toHaveBeenCalledWith(23);
-    })
+    });
 
     test("should reset display after clicking green and then another number", async () => {
         const element = renderSelector({selectedPokemonId: 23});
@@ -58,6 +70,15 @@ describe("<SelectorPanel />", () => {
         fireEvent.click(element.container.getElementsByClassName("green")[0]);
         fireEvent.click(element.getAllByText("1")[0]);
         expect(element.container.getElementsByClassName("dex-display")[0].textContent).toBe("__1");
-    })
+    });
+
+    test("should validate if there is number before request", async () => {
+        const onConfirm = jest.fn();
+        const element = renderSelector({onConfirm});
+        expect(element.container.getElementsByClassName("dex-display")[0].textContent).toBe("___");
+        fireEvent.click(element.container.getElementsByClassName("green")[0]);
+        expect(element.container.getElementsByClassName("dex-display")[0].textContent).toBe("___");
+        expect(onConfirm).not.toBeCalled();
+    });
 
 });

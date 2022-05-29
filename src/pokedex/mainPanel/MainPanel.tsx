@@ -16,13 +16,16 @@ type props = {
     selectedPokemon?: Pokemon;
     goToNext: () => void;
     goToPrevious: () => void;
+    on: boolean;
+    onPowerPressed: () => void;
 }
 
-const MainPanel = ({selectedPokemon, goToNext, goToPrevious}: props) => {
+const MainPanel = ({on, selectedPokemon, goToNext, goToPrevious, onPowerPressed}: props) => {
     return <div>
         <div className='screen-container'>
             <ScreenBorder>
                 <MainScreen
+                    on={on}
                     selectedPokemon={selectedPokemon} />
             </ScreenBorder>
         </div>
@@ -30,7 +33,9 @@ const MainPanel = ({selectedPokemon, goToNext, goToPrevious}: props) => {
             <div className='main-buttons'>
                 <div className='other-buttons-wrapper'>
                     <div className='top-other-buttons'>
-                        <PokeButton shape='rounded' />
+                        <PokeButton 
+                            shape='rounded'
+                            onClickPokebutton={onPowerPressed}/>
                         <PokeBar color='red' />
                         <PokeBar color='blue' />
                     </div>

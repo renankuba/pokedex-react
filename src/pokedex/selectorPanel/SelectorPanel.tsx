@@ -11,11 +11,12 @@ type props = {
     selectedPokemonId?: number;
     onClose: ()=>void;
     onConfirm: (pokemonId:number) => void;
+    on: boolean;
 }
 
-const SelectorPanel = ({onClose, onConfirm, selectedPokemonId}:props) => {
+const SelectorPanel = ({on, onClose, onConfirm, selectedPokemonId}:props) => {
     const emptyText = "___";
-    const [text, setText] = useState<string>((selectedPokemonId?.toString() || emptyText).padStart(3, "_"));
+    const [text, setText] = useState<string>(on?(selectedPokemonId?.toString() || emptyText).padStart(3, "_"):"");
     const [reset, setReset] = useState<boolean>(true);
 
     const handleSetText = (text: string, pressedNumber: number) => {
@@ -29,8 +30,16 @@ const SelectorPanel = ({onClose, onConfirm, selectedPokemonId}:props) => {
     }
 
     const handleConfirm = () => {
-        onConfirm(Number.parseInt(text.replaceAll("_", "")));
-        setReset(true);
+        const pokemonId = Number.parseInt(text.replaceAll("_", ""));
+        if(!isNaN(pokemonId)){
+            onConfirm(pokemonId);
+            setReset(true);
+        }
+    }
+
+    const handleNumpadClick = (pressedNumber: number) => {
+        if(on)
+            setText(handleSetText(text, pressedNumber));
     }
 
     return <div className="selector-panel-wrapper">
@@ -39,7 +48,7 @@ const SelectorPanel = ({onClose, onConfirm, selectedPokemonId}:props) => {
                 color="gray"
                 text={text}
                 size="large" />
-            <NumPad onClick={pressedNumber => setText(handleSetText(text, pressedNumber))} />
+            <NumPad onClick={handleNumpadClick} />
         </div>
         <div className="selector-bottom-button">
              <div className="selector-top-bar">

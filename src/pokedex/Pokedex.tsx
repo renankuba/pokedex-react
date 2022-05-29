@@ -11,6 +11,7 @@ const Pokedex = () => {
     const [open, setOpen] = useState<boolean>(false);
     const [selectedPokemonId, setPokemonId] = useState<number>();
     const [selectedPokemon, setPokemon] = useState<Pokemon>();
+    const [on, setOn] = useState<boolean>(false);
 
     const next = () => {
         if(selectedPokemonId) {
@@ -34,6 +35,12 @@ const Pokedex = () => {
             .then(setPokemon);
     }
 
+    const handlePowerButton = () => {
+        setOn(!on)
+        setPokemon(undefined);
+        setPokemonId(undefined);
+    }
+
     return <div className={`pokedex `}>
         <BasePanel>
             {open ?
@@ -41,13 +48,16 @@ const Pokedex = () => {
                     selectedPokemon={selectedPokemon}
                     goToNext={next}
                     goToPrevious={previous}
+                    on={on}
+                    onPowerPressed={handlePowerButton}
                 />
                 : <Cover onOpen={() => setOpen(true)} />
             }
         </BasePanel>
         {open &&
             <SelectorPanel
-                key={selectedPokemonId}
+                key={`selector-${on}-${selectedPokemonId}`}
+                on={on}
                 selectedPokemonId={selectedPokemonId}
                 onClose={() => setOpen(false)}
                 onConfirm={handleConfirmSelection} />}
