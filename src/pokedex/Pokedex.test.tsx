@@ -1,4 +1,5 @@
-import {fireEvent, render } from "@testing-library/react";
+import {fireEvent, render, waitFor} from "@testing-library/react";
+import pokedexService from "../services/PokedexService";
 import Pokedex from "./Pokedex";
 
 const renderPokedex = (props: Partial<any> = {}) => {
@@ -51,4 +52,24 @@ describe("<Pokedex />", () => {
         expect(element.container.getElementsByClassName("screen on").length).toBe(1);
         expect(element.container.getElementsByClassName("dex-display gray large")[0].textContent).toBe("___");
     })
+
+    test("should turn on", async () => {
+        const pokemon = {
+            number: 1,
+            name: 'Bulbassaur',
+            image: ''
+        }
+        const mock = jest.spyOn(pokedexService, 'fetchPokemonById');
+        mock.mockResolvedValue(pokemon);
+
+        const element = renderPokedex();
+        fireEvent.click(element.container.getElementsByClassName("arrow-right-border")[0]);
+        fireEvent.click(element.container.getElementsByClassName("rounded")[0]);
+        fireEvent.click(element.getAllByText("1")[0]);
+        fireEvent.click(element.container.getElementsByClassName("poke-button square green")[0]);
+        expect(mock).toBeCalledTimes(1);
+        await waitFor(() => {
+            expect(element.container.getElementsByClassName("pokemon-view")[0].textContent).toBe('Bulbassaur');
+        });
+    });
 });

@@ -1,6 +1,4 @@
-import { useState } from 'react';
 import Pokemon from '../../model/Pokemon';
-import { fetchPokemonById } from '../../services/PokedexService';
 import AirExit from '../airExit/AirExit';
 import Dpad from '../button/dpad/Dpad';
 import PokeBar from '../button/PokeBar';

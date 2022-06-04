@@ -4,8 +4,8 @@ import Cover from './cover/Cover';
 import MainPanel from './mainPanel/MainPanel';
 import SelectorPanel from './selectorPanel/SelectorPanel';
 import './Pokedex.css';
-import { fetchPokemonById } from '../services/PokedexService';
 import Pokemon from '../model/Pokemon';
+import pokedexService from '../services/PokedexService';
 
 const Pokedex = () => {
     const [open, setOpen] = useState<boolean>(false);
@@ -31,7 +31,7 @@ const Pokedex = () => {
     }
 
     const fetchPokemon = (pokemonId:number) => {
-        fetchPokemonById(pokemonId)
+        pokedexService.fetchPokemonById(pokemonId)
             .then(setPokemon);
     }
 
