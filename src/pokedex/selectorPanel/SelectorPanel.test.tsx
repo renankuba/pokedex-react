@@ -81,4 +81,13 @@ describe("<SelectorPanel />", () => {
         expect(onConfirm).not.toBeCalled();
     });
 
+    test("should validate if it is non zero value", async () => {
+        const onConfirm = jest.fn();
+        const element = renderSelector({onConfirm, selectedPokemonId: 0});
+        expect(element.container.getElementsByClassName("dex-display")[0].textContent).toBe("__0");
+        fireEvent.click(element.container.getElementsByClassName("green")[0]);
+        expect(element.container.getElementsByClassName("dex-display")[0].textContent).toBe("___");
+        expect(onConfirm).not.toBeCalled();
+    });
+
 });

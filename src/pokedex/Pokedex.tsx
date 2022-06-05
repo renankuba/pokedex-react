@@ -14,13 +14,13 @@ const Pokedex = () => {
     const [on, setOn] = useState<boolean>(false);
 
     const next = () => {
-        if(selectedPokemonId) {
+        if(selectedPokemonId && selectedPokemonId < 151) {
             handleConfirmSelection(selectedPokemonId + 1);
         }
     };
 
     const previous = () => {
-        if(selectedPokemonId) {
+        if(selectedPokemonId && selectedPokemonId > 1) {
             handleConfirmSelection(selectedPokemonId - 1);
         }
     };

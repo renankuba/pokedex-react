@@ -17,7 +17,7 @@ type props = {
 const SelectorPanel = ({on, onClose, onConfirm, selectedPokemonId}:props) => {
     const emptyText = "___";
     const [text, setText] = useState<string>(on?(selectedPokemonId?.toString() || emptyText).padStart(3, "_"):"");
-    const [reset, setReset] = useState<boolean>(true);
+    const [reset, setResetOnNextInteraction] = useState<boolean>(true);
 
     const handleSetText = (text: string, pressedNumber: number) => {
         let blank = '_'
@@ -25,16 +25,18 @@ const SelectorPanel = ({on, onClose, onConfirm, selectedPokemonId}:props) => {
         if(text.length === 3)
             text = '';
         text = (text+pressedNumber);
-        setReset(false);
+        setResetOnNextInteraction(false);
         return text.padStart(3, blank);
     }
 
     const handleConfirm = () => {
         const pokemonId = Number.parseInt(text.replaceAll("_", ""));
-        if(!isNaN(pokemonId)){
+        if(pokemonId){
             onConfirm(pokemonId);
-            setReset(true);
+        } else {
+            setText(emptyText)
         }
+        setResetOnNextInteraction(true);
     }
 
     const handleNumpadClick = (pressedNumber: number) => {
