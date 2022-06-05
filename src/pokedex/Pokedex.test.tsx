@@ -98,7 +98,7 @@ describe("<Pokedex />", () => {
         await waitFor(() => {
             expect(element.container.getElementsByClassName("pokemon-view")[0].textContent).toBe('Pikachu');
         });
-        fireEvent.click(element.container.getElementsByClassName("down")[0]);
+        fireEvent.click(element.container.getElementsByClassName("right")[0]);
         await waitFor(() => {
             expect(element.container.getElementsByClassName("pokemon-view")[0].textContent).toBe('Raichu');
             expect(mock).toBeCalledTimes(2);
@@ -130,7 +130,7 @@ describe("<Pokedex />", () => {
         await waitFor(() => {
             expect(element.container.getElementsByClassName("pokemon-view")[0].textContent).toBe('Pikachu');
         });
-        fireEvent.click(element.container.getElementsByClassName("up")[0]);
+        fireEvent.click(element.container.getElementsByClassName("left")[0]);
         await waitFor(() => {
             expect(element.container.getElementsByClassName("pokemon-view")[0].textContent).toBe('Arbok');
             expect(mock).toBeCalledTimes(2);
@@ -161,7 +161,7 @@ describe("<Pokedex />", () => {
         await waitFor(() => {
             expect(element.container.getElementsByClassName("pokemon-view")[0].textContent).toBe('Bulbasaur');
         });
-        fireEvent.click(element.container.getElementsByClassName("up")[0]);
+        fireEvent.click(element.container.getElementsByClassName("left")[0]);
         expect(mock).toBeCalledTimes(1);
         expect(element.container.getElementsByClassName("pokemon-view")[0].textContent).toBe('Bulbasaur');
         expect(element.container.getElementsByClassName("dex-display gray large")[0].textContent).toBe("__1");
@@ -192,7 +192,7 @@ describe("<Pokedex />", () => {
         await waitFor(() => {
             expect(element.container.getElementsByClassName("pokemon-view")[0].textContent).toBe('Mew');
         });
-        fireEvent.click(element.container.getElementsByClassName("down")[0]);
+        fireEvent.click(element.container.getElementsByClassName("right")[0]);
         expect(mock).toBeCalledTimes(1);
         expect(element.container.getElementsByClassName("pokemon-view")[0].textContent).toBe('Mew');
         expect(element.container.getElementsByClassName("dex-display gray large")[0].textContent).toBe("151");

@@ -46,8 +46,8 @@ const MainPanel = ({on, selectedPokemon, goToNext, goToPrevious, onPowerPressed}
                     </div>
                 </div>
                 <Dpad
-                    onPressDown={goToNext}
-                    onPressUp={goToPrevious}
+                    onPressRight={goToNext}
+                    onPressLeft={goToPrevious}
                 />
             </div>
             <div className='footer'>
