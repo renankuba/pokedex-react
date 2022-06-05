@@ -10,7 +10,7 @@ import pokedexService from '../services/PokedexService';
 const Pokedex = () => {
     const [open, setOpen] = useState<boolean>(false);
     const [selectedPokemonId, setPokemonId] = useState<number>();
-    const [selectedPokemon, setPokemon] = useState<Pokemon>();
+    const [selectedPokemon, setPokemon] = useState<Pokemon | Array<Pokemon>>();
     const [on, setOn] = useState<boolean>(false);
 
     const next = () => {
@@ -25,13 +25,22 @@ const Pokedex = () => {
         }
     };
 
-    const handleConfirmSelection = (pokemonId:number) => {
-        setPokemonId(pokemonId);
-        fetchPokemon(pokemonId);
+    const handleConfirmSelection = (pokemonId?:number) => {
+        if(pokemonId){
+            setPokemonId(pokemonId);
+            fetchPokemon(pokemonId);
+        } else {
+            fetchPokemonList();
+        }
     }
 
     const fetchPokemon = (pokemonId:number) => {
         pokedexService.fetchPokemonById(pokemonId)
+            .then(setPokemon);
+    }
+
+    const fetchPokemonList = () => {
+        pokedexService.fetchPokemonList()
             .then(setPokemon);
     }
 

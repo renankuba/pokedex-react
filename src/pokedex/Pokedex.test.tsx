@@ -1,11 +1,12 @@
-import {fireEvent, render, waitFor} from "@testing-library/react";
+import {configure, fireEvent, render, waitFor} from "@testing-library/react";
+import Pokemon from "../model/Pokemon";
 import pokedexService from "../services/PokedexService";
 import Pokedex from "./Pokedex";
 
+configure({testIdAttribute: 'id'});
 const renderPokedex = (props: Partial<any> = {}) => {
     const defaultProps = {
     };
-
     return render(<Pokedex {...defaultProps} {...props}/>);
 }
 
@@ -198,5 +199,38 @@ describe("<Pokedex />", () => {
         expect(element.container.getElementsByClassName("dex-display gray large")[0].textContent).toBe("151");
     });
 
-    //search for empty will fetch list
+    test("should fetch pokemon list and show on display", async () => {
+        const list:Array<Pokemon> = [
+            {number:1, name: "Bulbasaur", image: ""},
+            {number:2, name: "Ivysaur", image: ""},
+            {number:3, name: "Venusaur", image: ""},
+            {number:4, name: "Charmander", image: ""},
+            {number:5, name: "Chameleon", image: ""},
+            {number:6, name: "Charizard", image: ""},
+            {number:7, name: "Squirtle", image: ""},
+        ];
+
+        const mock = jest.spyOn(pokedexService, 'fetchPokemonList');
+        mock.mockResolvedValueOnce(list);
+        
+        const element = renderPokedex();
+        fireEvent.click(element.container.getElementsByClassName("arrow-right-border")[0]);
+        fireEvent.click(element.container.getElementsByClassName("rounded")[0]);
+        fireEvent.click(element.container.getElementsByClassName("poke-button square green")[0]);
+        
+        expect(mock).toBeCalledTimes(1);
+        await waitFor(() => {
+            expect(element.container.getElementsByClassName("pokemon-list-view").length).toBe(1);
+        });
+
+        expect(element.getByTestId('pokemon-list-1').textContent).toBe('1.Bulbasaur');
+        expect(element.getByTestId('pokemon-list-2').textContent).toBe('2.Ivysaur');
+        expect(element.getByTestId('pokemon-list-3').textContent).toBe('3.Venusaur');
+        expect(element.getByTestId('pokemon-list-4').textContent).toBe('4.Charmander');
+        expect(element.getByTestId('pokemon-list-5').textContent).toBe('5.Chameleon');
+        expect(element.getByTestId('pokemon-list-6').textContent).toBe('6.Charizard');
+        
+        expect(element.queryByTestId('pokemon-list-7')).toBeNull();
+    });
+
 });

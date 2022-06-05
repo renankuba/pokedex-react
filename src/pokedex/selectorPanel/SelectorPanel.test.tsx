@@ -72,13 +72,14 @@ describe("<SelectorPanel />", () => {
         expect(element.container.getElementsByClassName("dex-display")[0].textContent).toBe("__1");
     });
 
-    test("should validate if there is number before request", async () => {
+    test("should call with no parameters if is empty", async () => {
         const onConfirm = jest.fn();
         const element = renderSelector({onConfirm});
         expect(element.container.getElementsByClassName("dex-display")[0].textContent).toBe("___");
         fireEvent.click(element.container.getElementsByClassName("green")[0]);
         expect(element.container.getElementsByClassName("dex-display")[0].textContent).toBe("___");
-        expect(onConfirm).not.toBeCalled();
+        expect(onConfirm).toHaveBeenCalledTimes(1);
+        expect(onConfirm).toHaveBeenCalledWith();
     });
 
     test("should validate if it is non zero value", async () => {

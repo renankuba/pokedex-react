@@ -10,7 +10,7 @@ import './SelectorPanel.css';
 type props = {
     selectedPokemonId?: number;
     onClose: ()=>void;
-    onConfirm: (pokemonId:number) => void;
+    onConfirm: (pokemonId?:number) => void;
     on: boolean;
 }
 
@@ -30,13 +30,18 @@ const SelectorPanel = ({on, onClose, onConfirm, selectedPokemonId}:props) => {
     }
 
     const handleConfirm = () => {
-        const pokemonId = Number.parseInt(text.replaceAll("_", ""));
-        if(pokemonId){
-            onConfirm(pokemonId);
+        const pokemonIdString = text.replaceAll("_", "");
+        if (pokemonIdString === "") {
+            onConfirm();
         } else {
-            setText(emptyText)
+            const pokemonId = Number.parseInt(pokemonIdString);
+            if (pokemonId) {
+                onConfirm(pokemonId);
+            } else {
+                setText(emptyText)
+            }
+            setResetOnNextInteraction(true);
         }
-        setResetOnNextInteraction(true);
     }
 
     const handleNumpadClick = (pressedNumber: number) => {

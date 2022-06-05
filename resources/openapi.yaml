@@ -3,11 +3,21 @@ info:
   title: pokedex OpenApi document
   version: 0.0.1
 paths:
+  /pokedex/pokemons:
+    get:
+      summary: get information for pokemon with specified id.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/pokemonList"
   /pokedex/pokemons/{pokemonId}:
     get:
       summary: get information for pokemon with specified id.
       parameters:
-      - $ref: "#/components/parameters/pokemonId"
+        - $ref: "#/components/parameters/pokemonId"
       responses:
         '200':
           description: OK
@@ -46,6 +56,30 @@ components:
         image:
           type: string
           example: "https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/1.svg"
+    pokemonList:
+      type: array
+      items:
+        type: object
+        properties:
+          number:
+            $ref: "#/components/schemas/pokemonId"
+          name:
+            type: string
+      example:
+        - number: 1
+          name: "Bulbasaur"
+        - number: 2
+          name: "Ivysaur"
+        - number: 3
+          name: "Venusaur"
+        - number: 4
+          name: "Charmander"
+        - number: 5
+          name: "Charmeleon"
+        - number: 6
+          name: "Charizard"
+        - number: 7
+          name: "Squirtile"
     notFound:
       type: object
       properties:

@@ -11,7 +11,7 @@ import MainScreen from '../screen/MainScreen';
 import './MainPanel.css';
 
 type props = {
-    selectedPokemon?: Pokemon;
+    selectedPokemon?: Pokemon | Array<Pokemon>;
     goToNext: () => void;
     goToPrevious: () => void;
     on: boolean;

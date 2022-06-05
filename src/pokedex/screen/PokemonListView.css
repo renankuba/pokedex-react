@@ -1,0 +1,7 @@
+.pokemon-list-view {
+    padding: 20px 10px;
+}
+
+.pokemon-list-view > div{
+    padding: 5px 0;
+}
