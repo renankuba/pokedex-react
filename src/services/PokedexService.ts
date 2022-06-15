@@ -14,5 +14,4 @@ const pokedexService = {
     }
 };
 
-
 export default pokedexService;

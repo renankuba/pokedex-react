@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Pokemon from '../../model/Pokemon';
 import AirExit from '../airExit/AirExit';
 import Dpad from '../button/dpad/Dpad';
@@ -14,15 +15,20 @@ type props = {
     selectedPokemon?: Pokemon | Array<Pokemon>;
     goToNext: () => void;
     goToPrevious: () => void;
+    goUp: ()=> void;
+    goDown: ()=>void;
     on: boolean;
     onPowerPressed: () => void;
+    cursor: number;
 }
 
-const MainPanel = ({on, selectedPokemon, goToNext, goToPrevious, onPowerPressed}: props) => {
+const MainPanel = ({on, selectedPokemon, goToNext, goToPrevious, onPowerPressed, goUp, goDown, cursor}: props) => {
+    
     return <div>
         <div className='screen-container'>
             <ScreenBorder>
                 <MainScreen
+                    cursor={cursor}
                     on={on}
                     selectedPokemon={selectedPokemon} />
             </ScreenBorder>
@@ -48,6 +54,8 @@ const MainPanel = ({on, selectedPokemon, goToNext, goToPrevious, onPowerPressed}
                 <Dpad
                     onPressRight={goToNext}
                     onPressLeft={goToPrevious}
+                    onPressDown={goDown}
+                    onPressUp={goUp}
                 />
             </div>
             <div className='footer'>

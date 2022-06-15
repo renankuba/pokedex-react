@@ -231,6 +231,110 @@ describe("<Pokedex />", () => {
         expect(element.getByTestId('pokemon-list-6').textContent).toBe('6.Charizard');
         
         expect(element.queryByTestId('pokemon-list-7')).toBeNull();
+        expect(element.getByTestId('pokemon-list-1').classList).toContain('selected-pokemon-item');
     });
+
+    test("should navigate though list", async () => {
+        const list:Array<Pokemon> = [
+            {number:1, name: "Bulbasaur", image: ""},
+            {number:2, name: "Ivysaur", image: ""},
+            {number:3, name: "Venusaur", image: ""},
+            {number:4, name: "Charmander", image: ""},
+            {number:5, name: "Chameleon", image: ""},
+            {number:6, name: "Charizard", image: ""},
+            {number:7, name: "Squirtle", image: ""},
+        ];
+
+        const mock = jest.spyOn(pokedexService, 'fetchPokemonList');
+        mock.mockResolvedValueOnce(list);
+        
+        const element = renderPokedex();
+        fireEvent.click(element.container.getElementsByClassName("arrow-right-border")[0]);
+        fireEvent.click(element.container.getElementsByClassName("rounded")[0]);
+        fireEvent.click(element.container.getElementsByClassName("poke-button square green")[0]);
+        
+        expect(mock).toBeCalledTimes(1);
+        await waitFor(() => {
+            expect(element.container.getElementsByClassName("pokemon-list-view").length).toBe(1);
+        });
+        
+        fireEvent.click(element.container.getElementsByClassName("poke-button arrow down")[0]);
+        fireEvent.click(element.container.getElementsByClassName("poke-button arrow down")[0]);
+        expect(element.getByTestId('pokemon-list-3').classList).toContain('selected-pokemon-item');
+
+        fireEvent.click(element.container.getElementsByClassName("poke-button arrow up")[0]);
+        expect(element.getByTestId('pokemon-list-2').classList).toContain('selected-pokemon-item');
+    });
+
+    test("should fetch selected on list", async () => {
+        const list:Array<Pokemon> = [
+            {number:1, name: "Bulbasaur", image: ""},
+            {number:2, name: "Ivysaur", image: ""},
+            {number:3, name: "Venusaur", image: ""},
+            {number:4, name: "Charmander", image: ""},
+            {number:5, name: "Chameleon", image: ""},
+            {number:6, name: "Charizard", image: ""},
+            {number:7, name: "Squirtle", image: ""},
+        ];
+
+        const mockFetchList = jest.spyOn(pokedexService, 'fetchPokemonList');
+        mockFetchList.mockResolvedValueOnce(list);
+
+        const mockFetchPokemon = jest.spyOn(pokedexService, 'fetchPokemonById');
+        mockFetchPokemon.mockResolvedValueOnce(list[2]);
+
+        const element = renderPokedex();
+        fireEvent.click(element.container.getElementsByClassName("arrow-right-border")[0]);
+        fireEvent.click(element.container.getElementsByClassName("rounded")[0]);
+        fireEvent.click(element.container.getElementsByClassName("poke-button square green")[0]);
+        
+        expect(mockFetchList).toBeCalledTimes(1);
+        await waitFor(() => {
+            expect(element.container.getElementsByClassName("pokemon-list-view").length).toBe(1);
+        });
+        
+        fireEvent.click(element.container.getElementsByClassName("poke-button arrow down")[0]);
+        fireEvent.click(element.container.getElementsByClassName("poke-button arrow down")[0]);
+        fireEvent.click(element.container.getElementsByClassName("poke-button square green")[0]);
+        expect(mockFetchPokemon).toBeCalledWith(3);
+    });
+
+    test("should go to next page", async () => {
+        const list:Array<Pokemon> = [
+            {number:1, name: "Bulbasaur", image: ""},
+            {number:2, name: "Ivysaur", image: ""},
+            {number:3, name: "Venusaur", image: ""},
+            {number:4, name: "Charmander", image: ""},
+            {number:5, name: "Chameleon", image: ""},
+            {number:6, name: "Charizard", image: ""},
+            {number:7, name: "Squirtle", image: ""},
+        ];
+
+        const mockFetchList = jest.spyOn(pokedexService, 'fetchPokemonList');
+        mockFetchList.mockResolvedValueOnce(list);
+
+        const mockFetchPokemon = jest.spyOn(pokedexService, 'fetchPokemonById');
+        mockFetchPokemon.mockResolvedValueOnce(list[2]);
+
+        const element = renderPokedex();
+        fireEvent.click(element.container.getElementsByClassName("arrow-right-border")[0]);
+        fireEvent.click(element.container.getElementsByClassName("rounded")[0]);
+        fireEvent.click(element.container.getElementsByClassName("poke-button square green")[0]);
+        
+        expect(mockFetchList).toBeCalledTimes(1);
+        await waitFor(() => {
+            expect(element.container.getElementsByClassName("pokemon-list-view").length).toBe(1);
+        });
+        
+        fireEvent.click(element.container.getElementsByClassName("poke-button arrow down")[0]);
+        fireEvent.click(element.container.getElementsByClassName("poke-button arrow down")[0]);
+        fireEvent.click(element.container.getElementsByClassName("poke-button arrow down")[0]);
+        fireEvent.click(element.container.getElementsByClassName("poke-button arrow down")[0]);
+        fireEvent.click(element.container.getElementsByClassName("poke-button arrow down")[0]);
+        fireEvent.click(element.container.getElementsByClassName("poke-button arrow down")[0]);
+        fireEvent.click(element.container.getElementsByClassName("poke-button arrow down")[0]);
+        expect(element.getByTestId('pokemon-list-7').classList).toContain('selected-pokemon-item');
+    });
+
 
 });

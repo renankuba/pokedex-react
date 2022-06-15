@@ -12,6 +12,7 @@ const Pokedex = () => {
     const [selectedPokemonId, setPokemonId] = useState<number>();
     const [selectedPokemon, setPokemon] = useState<Pokemon | Array<Pokemon>>();
     const [on, setOn] = useState<boolean>(false);
+    const [cursor, setCursor] = useState<number>(0);
 
     const next = () => {
         if(selectedPokemonId && selectedPokemonId < 151) {
@@ -26,6 +27,9 @@ const Pokedex = () => {
     };
 
     const handleConfirmSelection = (pokemonId?:number) => {
+        if(Array.isArray(selectedPokemon)){
+            pokemonId = selectedPokemon[cursor].number;
+        }
         if(pokemonId){
             setPokemonId(pokemonId);
             fetchPokemon(pokemonId);
@@ -40,6 +44,7 @@ const Pokedex = () => {
     }
 
     const fetchPokemonList = () => {
+        setCursor(0);
         pokedexService.fetchPokemonList()
             .then(setPokemon);
     }
@@ -50,6 +55,16 @@ const Pokedex = () => {
         setPokemonId(undefined);
     }
 
+    const handleGoUp = () => {
+        if(Array.isArray(selectedPokemon) && cursor > 0)
+            setCursor(cursor - 1);
+    }
+
+    const handleGoDown = () => {
+        if(Array.isArray(selectedPokemon) && cursor < selectedPokemon.length-1)
+            setCursor(cursor + 1);
+    }
+
     return <div className={`pokedex `}>
         <BasePanel>
             {open ?
@@ -57,8 +72,11 @@ const Pokedex = () => {
                     selectedPokemon={selectedPokemon}
                     goToNext={next}
                     goToPrevious={previous}
+                    goUp={handleGoUp}
+                    goDown={handleGoDown}
                     on={on}
                     onPowerPressed={handlePowerButton}
+                    cursor={cursor}
                 />
                 : <Cover onOpen={() => setOpen(true)} />
             }

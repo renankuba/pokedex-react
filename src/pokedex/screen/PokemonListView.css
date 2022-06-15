@@ -5,3 +5,6 @@
 .pokemon-list-view > div{
     padding: 5px 0;
 }
+.pokemon-list-view > .selected-pokemon-item{
+    border: dashed 2px #000000;
+}

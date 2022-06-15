@@ -5,9 +5,10 @@ import PokemonView from './PokemonView';
 
 type props = {
     selectedPokemon?: Pokemon | Array<Pokemon>,
-    on: boolean
+    on: boolean,
+    cursor?: number,
 }
-const MainScreen = ({selectedPokemon, on}:props) => {
+const MainScreen = ({selectedPokemon, on, cursor}:props) => {
     const shouldRenderPokemonView = selectedPokemon && !Array.isArray(selectedPokemon);
     const shouldRenderPokemonListView = selectedPokemon && Array.isArray(selectedPokemon);
 
@@ -17,7 +18,7 @@ const MainScreen = ({selectedPokemon, on}:props) => {
     />}
     {shouldRenderPokemonListView && <PokemonListView 
         pokemons={selectedPokemon}
-        cursor={0}
+        cursor={cursor || 0} 
     />}
     </div>
 } 

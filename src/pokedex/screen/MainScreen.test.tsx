@@ -66,4 +66,5 @@ describe("<MainScreen />", () => {
         
         expect(element.queryByTestId('pokemon-list-7')).toBeNull();
     });
+
 });
